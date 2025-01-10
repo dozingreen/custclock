@@ -12,7 +12,7 @@ class CustomClockPlugin(plugins.Plugin):
     __author__ = 'dozingreen'
     __version__ = '1.0'
     __license__ = 'MIT'
-    __description__ = 'clock plugin with added and easier editability in config.toml'
+    __description__ = 'clock plugin with added configurability'
      
     def on_loaded(self):
         self.date_format = self.options.get('date_format', "%m/%d/%y")
@@ -22,7 +22,8 @@ class CustomClockPlugin(plugins.Plugin):
         self.militarytime = self.options.get('militarytime', False) #12 hr default 
         self.timezone = self.options.get('timezone', 'UTC')  # Changes UI timezone 
         logging.info(f"Clock Plugin loaded with configurations {self.options}")
-    
+
+#timezone validation
         try:
             self.timezone = pytz.timezone(self.timezone)
             logging.info(f"Timezone set to {self.timezone}")
